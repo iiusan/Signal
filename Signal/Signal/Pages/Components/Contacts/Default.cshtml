@@ -1,0 +1,15 @@
+﻿@model List<Signal.ViewModels.ApplicationUserViewModel>
+
+@foreach(var contact in Model)
+{
+<div class="contact" guid="@contact.Id">
+    <div class="row">
+        <h4>@contact.FirstName @contact.LastName</h4>
+        <h5>@contact.Email</h5>
+    </div>
+    <div class="row" hidden>
+        <img src="~/images/remove.png" style="width:23px;" />
+        Remove conntact
+    </div>
+</div>
+}

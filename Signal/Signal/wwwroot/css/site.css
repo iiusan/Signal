@@ -1,0 +1,165 @@
+.cneter {
+    text-align: center;
+}
+.login-icon {
+    height: auto;
+    width: 30%
+}
+
+.contact{
+    margin: 10px;
+    background-color:#ededed;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 25px;
+    padding-left:30px;
+}
+.red-text {
+   color:red;
+}
+
+.contact-visible {
+    margin: 10px;
+    background-color: #0a564f;
+    padding: 15px;
+    color:white;
+    font-size: 15px;
+    border-radius: 25px;
+    padding-left: 30px;
+}
+
+#contacts-container {
+    height: 80%;
+}
+
+
+#login-container {
+    width: 100%;
+    margin-top: 30vh;
+    margin-bottom: 30vh;
+    border-radius: 25px;
+    padding: 50px;
+    position: relative;
+    z-index: 3;
+    background-color: hsla(0, 0%, 55%, 0.75);
+}
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 0;
+    padding-right: 0;
+    top: 0%;
+    margin: 0 0;
+}
+
+.msg-container {
+    position: relative;
+    margin-top: 50px;
+    margin-left: 80px;
+    height: 80%;
+}
+
+
+.msg-left {
+    margin: 10px;
+    background-color: white;
+    padding: 20px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-radius: 25px;
+    position: relative;
+    float: left;
+    margin-right: 50%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+}
+
+.txt-left {
+    background-color: white;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 16px;
+    border-radius: 25px;
+    position: relative;
+    float: left;
+    padding: 10px;
+}
+
+.txt-right {
+    float: right;
+    background-color: #0a564f;
+    color: white;
+    text-align: end;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 16px;
+    border-radius: 25px;
+    padding:10px;
+}
+
+.msg-right {
+    float: right;
+    margin: 20px;
+    margin-left: 50%;
+    background-color: #0a564f;
+    color: white;
+    text-align: end;
+    padding: 10px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-radius: 25px;
+    position: relative;
+    margin-right: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+img.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: -512px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
