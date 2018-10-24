@@ -1,8 +1,12 @@
 ﻿@model Signal.ViewModels.ApplicationUserViewModel
 
-<div class="col-lg-4">
+<div class="col-lg-12">
     <h3 style="color:#1d7a1c">Hi, @Model.FirstName</h3>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add-contact">Add Contact</button>
+    @if (Model.IsAdmin)
+    {
+        <a type="button" class="btn btn-lg btn-warning" href="/dash">Dashboard</a>
+    }
     <span id="user-id" hidden>@Model.Id</span>
     <span id="to-user-id" hidden>@Model.Id</span>
     <span id="session-id" hidden></span>

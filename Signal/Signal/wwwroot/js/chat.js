@@ -14,13 +14,19 @@ var contactTemplate = "<div class=\"contact\" guid=\"{u-guid}\">"+
                     "</div>"+
                     " </div>";
 
+var adminTable;
+var adminPag = 0;
+
+function successfullAdd(d) {
+    $("[data-dismiss='modal']").click();
+}
+
 function contactSuccessfullAdd(d) {
     var contact = contactTemplate.replace("{contact-first-name}", d.firstName).replace("{contact-last-name}", d.lastName).replace("{contact-email}", d.email).replace("{u-guidl}", d.id);
     $('#contacts-container').prepend(contact);
 }
 
 $("#msg-container").on("change", "div>textarea", function () {
-   // console.error('change');
     var txt = $(this).val();
     connection.invoke("UpdateMessageServer", $(this).attr('guid'), txt).catch(function (err) {
         return console.error(err.toString());
@@ -33,6 +39,46 @@ connection.on("UpdateMessageClient", function (message, id) {
     $('p').filter("[guid='" + id + "']").text(message);
 });
 
+function searchSuccessfull(d) {
+    adminTable = d;
+    buildPagination();
+    //var contact = contactTemplate.replace("{contact-first-name}", d.firstName).replace("{contact-last-name}", d.lastName).replace("{contact-email}", d.email).replace("{u-guidl}", d.id);
+    //$('#contacts-container').prepend(contact);
+}
+
+function buildPagination(){
+    $('#pag').html("")
+    $('#pag').append("<li class=\"page-item disabled\">"+
+                        "<a class=\"page-link\" href=\"#\" tabindex=\"-1\">1</a>"+
+        "</li>");
+    for (var i = 1; i < adminTable.pagination; ++i) {
+        var pag1 = "<li class=\"page-item\"><a class=\"page-link\" href=\"#\">{pag}</a></li>";
+        pag1 = pag1.replace('{pag}', i + 1);
+        $('#pag').append(pag1);
+    }
+    adminPag = 0;
+    buildTable();
+}
+
+function buildTable() {
+    $('#atable').html("");
+    var r = 0;
+    for (var i = adminPag * 5; i < 5 || r < 5; ++i) {
+        try {
+            var row = "<tr><td>{FirstName}</td><td>{LastName}</td><td>{Email}</td><td>{IsAdmin}</td></tr>";
+            row = row.replace('{FirstName}', adminTable.userList[i].firstName).replace('{LastName}', adminTable.userList[i].lastName).replace('{Email}', adminTable.userList[i].email).replace('{IsAdmin}', adminTable.userList[i].isAdmin);
+            $('#atable').append(row);
+        }
+        catch (err) { }
+        r++;
+    }
+    $('.page-item').click(function () {
+        $('.page-item').removeClass('disabled');
+        $(this).addClass('disabled');
+        adminPag = $(this).text() - 1;
+        buildTable();
+    });
+}
 
 
 $("#contacts-container").on("click", ".contact, .contact-visible", function () {
@@ -74,6 +120,15 @@ function getAllMessages() {
     event.preventDefault();
 }
 
+
+
+$('.page-item').click(function () {
+    $('.page-item').removeClass('disabled');
+    $(this).addClass('disabled');
+    adminPag = $(this).text() - 1;
+    buildTable();
+});
+
 connection.connectionClosed(function () {
     setTimeout(function () {
         $.connection.hub.start();
@@ -93,7 +148,6 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     currentUser = $('#user-id').text();
     toUser = $('#to-user-id').text();
     var message = document.getElementById("messageInput").value;
-   // addpendMessage(currentUser, message, 0);//
     connection.invoke("SendMessage", currentUser, toUser, message).catch(function (err) {
         return console.error(err.toString());
     });
@@ -101,28 +155,3 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 });
 
 
-(function ($) {
-
-    $.fn.filterByData = function (prop, val) {
-        var $self = this;
-        if (typeof val === 'undefined') {
-            return $self.filter(
-                function () { return typeof $(this).data(prop) !== 'undefined'; }
-            );
-        }
-        return $self.filter(
-            function () { return $(this).data(prop) == val; }
-        );
-    };
-
-})(window.jQuery);
-
-
-function guid() {
-    function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}

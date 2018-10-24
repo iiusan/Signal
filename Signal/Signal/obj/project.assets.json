@@ -12262,11 +12262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ionut\\source\\repos\\Signal\\Signal\\Signal.csproj",
+      "projectUniqueName": "C:\\Users\\Ionut\\source\\repos\\iiusan\\Signal\\Signal\\Signal\\Signal.csproj",
       "projectName": "Signal",
-      "projectPath": "C:\\Users\\Ionut\\source\\repos\\Signal\\Signal\\Signal.csproj",
+      "projectPath": "C:\\Users\\Ionut\\source\\repos\\iiusan\\Signal\\Signal\\Signal\\Signal.csproj",
       "packagesPath": "C:\\Users\\Ionut\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ionut\\source\\repos\\Signal\\Signal\\obj\\",
+      "outputPath": "C:\\Users\\Ionut\\source\\repos\\iiusan\\Signal\\Signal\\Signal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

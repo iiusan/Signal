@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 namespace Signal.ViewComponents
 {
     [Authorize]
-    public class ContactsViewComponent : ViewComponent
+    public class AppUsers : ViewComponent
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private Data.ApplicationDbContext _db;
         private readonly Core.UserManager _dbUserManager;
 
-        public ContactsViewComponent(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, Data.ApplicationDbContext db)
+        public AppUsers(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, Data.ApplicationDbContext db)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -27,10 +27,20 @@ namespace Signal.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var id =_userManager.GetUserAsync(HttpContext.User).Result.Id;
-            var results = _dbUserManager.GetUserContacts(id);
+            float count = _dbUserManager.GetUserCount();
+
+            int pag = Convert.ToInt32(count / 5);
+            float pag1 = count / 5;
+            if (pag != pag1)
+                pag++;
+
+            var results = new ViewModels.TotalUsersViewModel
+            {
+                UserList = _dbUserManager.GetDashUsers(5, 0),
+                UserCount = count,
+                Pagination = pag
+            };
             return View(results);
         }
-
     }
 }

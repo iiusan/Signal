@@ -44,3 +44,6 @@ C:\Users\Ionut\source\repos\Signal\Signal\obj\Debug\netcoreapp2.1\Signal.csproj.
 C:\Users\Ionut\source\repos\Signal\Signal\obj\Debug\netcoreapp2.1\Signal.csprojAssemblyReference.cache
 C:\Users\Ionut\source\repos\Signal\Signal\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\Ionut\source\repos\Signal\Signal\obj\Debug\netcoreapp2.1\Razor\Pages\Components\Contacts\Default.g.cshtml.cs
+C:\Users\Ionut\source\repos\Signal\Signal\obj\Debug\netcoreapp2.1\Razor\Pages\Dash.g.cshtml.cs
+C:\Users\Ionut\source\repos\Signal\Signal\obj\Debug\netcoreapp2.1\Razor\Pages\Components\AppUsers\Default.g.cshtml.cs
+C:\Users\Ionut\source\repos\Signal\Signal\obj\Debug\netcoreapp2.1\Razor\Pages\Components\Admin\Default.g.cshtml.cs

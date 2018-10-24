@@ -38,5 +38,67 @@ namespace Signal.Controllers
                 return StatusCode(500);
             }
         }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Search(string search)
+        {
+            try
+            {
+                var searchResults = _dbUserManager.SearchUsers(search);
+                double count = searchResults.Count;
+
+                int pag = Convert.ToInt32(Math.Floor(count / 5));
+                double pag1 = count / 5;
+                if (pag != pag1)
+                    pag++;
+
+                var results = new ViewModels.TotalUsersViewModel
+                {
+                    UserList = searchResults,
+                    UserCount = count,
+                    Pagination = pag
+                };
+               
+                return new JsonResult(results);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult AddAdmin(string email)
+        {
+            try
+            {
+                _dbUserManager.AddAdmin(email);
+                return StatusCode(200);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult RemoveAdmin(string email)
+        {
+            try
+            {
+                _dbUserManager.RemoveAdmin(email);
+                return StatusCode(200);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+
+
     }
 }

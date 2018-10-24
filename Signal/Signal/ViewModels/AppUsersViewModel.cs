@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Signal.ViewModels
 {
-    public class ApplicationUserViewModel
+    public class AppUsersViewModel
     {
         public string Id { get; set; }
 

@@ -17,7 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\Components\AppUsers\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Components\Contacts\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Dash.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\Shared\_AccountLayout.cshtml">

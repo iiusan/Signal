@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Signal.Pages
 {
-    public class IndexModel : PageModel
+    public class DashModel : PageModel
     {
         public void OnGet()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
+            if(userId == null)
                 Response.Redirect("/Identity/Account/Login");
 
         }
