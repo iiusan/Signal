@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace Signal.ViewModels
 {
-    public class TotalUsersViewModel
-    {
-        public float UserCount { get; set; }
+    //public class TotalUsersViewModel
+    //{
+    //    public float UserCount { get; set; }
 
-        public List<AppUsersViewModel> UserList { get; set; }
+    //    public List<AppUsersViewModel> UserList { get; set; }
 
-        public int Pagination { get; set; }
-    }
+    //    public int Pagination { get; set; }
+    //}
 }
 
